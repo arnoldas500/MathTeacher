@@ -23,10 +23,14 @@ public class MainActivity extends AppCompatActivity {
     Button studentStartButton;
     int ansLoc;
     int numCorrect = 0;
+    TextView textViewResult;
     //answers array list
     ArrayList<Integer> answers = new ArrayList<Integer>();
+    int numQuestions = 0;
+    TextView textViewPoints;
 
     //buttons now clickable and returning correct location w/o crashing
+    //method to print out if answer was selected correct or not and updates score
     public void selectAns(View view){
         //printing each tag to log when clicked on in app
         Log.i("Tag", (String) view.getTag());
@@ -36,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
             Log.i("correct", "correct");
             //add 1 to the number of correct choices when user selects correct answer and then generate new question
             numCorrect++;
-        }
+            textViewResult.setText("Corrrect Answer!");
+
+
+        }else
+            textViewResult.setText("Wrong Answer!");
+        numQuestions++;
+        textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
     }
 
     //student start button
@@ -64,12 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
         //find the student start button on starting/ creating app
         studentStartButton = (Button)findViewById(R.id.studentStartButton);
-        TextView SumTextView = (TextView)findViewById(R.id.SumTextView);
+        TextView textViewSum = (TextView)findViewById(R.id.textViewSum);
 
         Button button0 = (Button)findViewById(R.id.button0);
         Button button1 = (Button)findViewById(R.id.button1);
         Button button2 = (Button)findViewById(R.id.button2);
         Button button3 = (Button)findViewById(R.id.button3);
+
+        textViewResult = (TextView)findViewById(R.id.textViewResult);
+
+        textViewPoints = (TextView)findViewById(R.id.textViewPoints);
 
         Random randInt = new Random();
 
@@ -78,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("first : "+first);
         System.out.println("second : "+second);
 
-        SumTextView.setText(Integer.toString(first)+" + "+Integer.toString(second));
+        textViewSum.setText(Integer.toString(first)+" + "+Integer.toString(second));
         //randomly place for correct answer
         ansLoc = randInt.nextInt(4);
 

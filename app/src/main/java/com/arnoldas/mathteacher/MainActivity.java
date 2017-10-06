@@ -8,13 +8,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    //hiding the student button after clicking it
+    Button studentStartButton;
+
+    //student start button
+    public void studentStart(View view){
+        studentStartButton.setVisibility(View.INVISIBLE);
+
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //find the student start button on starting/ creating app
+        studentStartButton = (Button)findViewById(R.id.studentStartButton);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

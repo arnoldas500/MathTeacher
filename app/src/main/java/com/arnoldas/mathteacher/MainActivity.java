@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +22,22 @@ public class MainActivity extends AppCompatActivity {
     //hiding the student button after clicking it
     Button studentStartButton;
     int ansLoc;
+    int numCorrect = 0;
     //answers array list
     ArrayList<Integer> answers = new ArrayList<Integer>();
+
+    //buttons now clickable and returning correct location w/o crashing
+    public void selectAns(View view){
+        //printing each tag to log when clicked on in app
+        Log.i("Tag", (String) view.getTag());
+
+        if(view.getTag().toString().equals(Integer.toString(ansLoc))){
+            //checking if log prints correct if select correct ans
+            Log.i("correct", "correct");
+            //add 1 to the number of correct choices when user selects correct answer and then generate new question
+            numCorrect++;
+        }
+    }
 
     //student start button
     public void studentStart(View view){
@@ -49,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         //find the student start button on starting/ creating app
         studentStartButton = (Button)findViewById(R.id.studentStartButton);
-        TextView resultTextView = (TextView)findViewById(R.id.resultTextView);
+        TextView SumTextView = (TextView)findViewById(R.id.SumTextView);
 
         Button button0 = (Button)findViewById(R.id.button0);
         Button button1 = (Button)findViewById(R.id.button1);
@@ -63,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("first : "+first);
         System.out.println("second : "+second);
 
-        resultTextView.setText(Integer.toString(first)+" + "+Integer.toString(second));
+        SumTextView.setText(Integer.toString(first)+" + "+Integer.toString(second));
         //randomly place for correct answer
         ansLoc = randInt.nextInt(4);
 

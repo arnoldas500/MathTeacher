@@ -18,7 +18,7 @@
         android:layout_marginTop="89dp"
         android:backgroundTint="@android:color/holo_green_light"
         android:nestedScrollingEnabled="false"
-        android:onClick="start"
+        android:onClick="studentStart"
         android:padding="20dp"
         android:text="Student"
         android:textSize="70sp"
@@ -80,7 +80,7 @@
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_red_light"
-            android:onClick="chooseAnswer"
+            android:onClick="selectAns"
             android:tag="0"
             android:text="5"
             android:textSize="50sp" />
@@ -95,7 +95,7 @@
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_purple"
-            android:onClick="chooseAnswer"
+            android:onClick="selectAns"
             android:tag="1"
             android:text="5"
             android:textSize="50sp" />
@@ -110,7 +110,7 @@
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_green_light"
-            android:onClick="chooseAnswer"
+            android:onClick="selectAns"
             android:tag="2"
             android:text="5"
             android:textSize="50sp" />
@@ -125,7 +125,7 @@
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:background="?android:attr/colorPrimary"
-            android:onClick="chooseAnswer"
+            android:onClick="selectAns"
             android:tag="3"
             android:text="5"
             android:textSize="50sp" />

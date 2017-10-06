@@ -20,17 +20,14 @@ public class MainActivity extends AppCompatActivity {
         studentStartButton.setVisibility(View.INVISIBLE);
 
 
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //find the student start button on starting/ creating app
-        studentStartButton = (Button)findViewById(R.id.studentStartButton);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //find the student start button on starting/ creating app
+        studentStartButton = (Button)findViewById(R.id.studentStartButton);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        
     }
 
     @Override

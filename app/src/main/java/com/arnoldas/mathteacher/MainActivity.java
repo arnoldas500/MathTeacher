@@ -28,6 +28,52 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int numQuestions = 0;
     TextView textViewPoints;
+    TextView textViewSum;
+    Button button0 ;
+    Button button1;
+    Button button2;
+    Button button3 ;
+
+    //left to do *generate new question, get timmer working,
+    public void newQuestion() {
+        Random randInt = new Random();
+
+        int first = randInt.nextInt(11);
+        int second = randInt.nextInt(11);
+        System.out.println("first : "+first);
+        System.out.println("second : "+second);
+
+        textViewSum.setText(Integer.toString(first)+" + "+Integer.toString(second));
+        //randomly place for correct answer
+        ansLoc = randInt.nextInt(4);
+
+
+        //for scenario of having the correct answer accidently randomly chosen
+        int ansWrong;
+        answers.clear();
+        for(int a = 0 ; a<4 ; a++){
+            if(a == ansLoc)
+                answers.add(first+second);
+            else {
+                ansWrong = randInt.nextInt(31);
+                while(ansWrong == first+second){
+                    ansWrong = randInt.nextInt(31);
+                }
+                answers.add(ansWrong);
+            }
+        }
+        //updating answer buttons with numbers from above
+        System.out.println("0 : "+answers.get(0));
+        System.out.println("1 : "+answers.get(1));
+        System.out.println("2 : "+answers.get(2));
+        System.out.println("3 : "+answers.get(3));
+
+        button0.setText(Integer.toString(answers.get(0)));
+        button1.setText(Integer.toString(answers.get(1)));
+        button2.setText(Integer.toString(answers.get(2)));
+        button3.setText(Integer.toString(answers.get(3)));
+    }
+
 
     //buttons now clickable and returning correct location w/o crashing
     //method to print out if answer was selected correct or not and updates score
@@ -47,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText("Wrong Answer!");
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
+        newQuestion();
     }
 
     //student start button
@@ -74,51 +121,19 @@ public class MainActivity extends AppCompatActivity {
 
         //find the student start button on starting/ creating app
         studentStartButton = (Button)findViewById(R.id.studentStartButton);
-        TextView textViewSum = (TextView)findViewById(R.id.textViewSum);
+        textViewSum = (TextView)findViewById(R.id.textViewSum);
 
-        Button button0 = (Button)findViewById(R.id.button0);
-        Button button1 = (Button)findViewById(R.id.button1);
-        Button button2 = (Button)findViewById(R.id.button2);
-        Button button3 = (Button)findViewById(R.id.button3);
+        button0 = (Button)findViewById(R.id.button0);
+        button1 = (Button)findViewById(R.id.button1);
+        button2 = (Button)findViewById(R.id.button2);
+        button3 = (Button)findViewById(R.id.button3);
 
         textViewResult = (TextView)findViewById(R.id.textViewResult);
 
         textViewPoints = (TextView)findViewById(R.id.textViewPoints);
 
-        Random randInt = new Random();
+        newQuestion();
 
-        int first = randInt.nextInt(11);
-        int second = randInt.nextInt(11);
-        System.out.println("first : "+first);
-        System.out.println("second : "+second);
-
-        textViewSum.setText(Integer.toString(first)+" + "+Integer.toString(second));
-        //randomly place for correct answer
-        ansLoc = randInt.nextInt(4);
-
-        //for scenario of having the correct answer accidently randomly chosen
-        int ansWrong;
-        for(int a = 0 ; a<4 ; a++){
-            if(a == ansLoc)
-                answers.add(first+second);
-            else {
-                ansWrong = randInt.nextInt(31);
-                while(ansWrong == first+second){
-                    ansWrong = randInt.nextInt(31);
-                }
-                answers.add(ansWrong);
-            }
-        }
-        //updating answer buttons with numbers from above
-        System.out.println("0 : "+answers.get(0));
-        System.out.println("1 : "+answers.get(1));
-        System.out.println("2 : "+answers.get(2));
-        System.out.println("3 : "+answers.get(3));
-
-        button0.setText(Integer.toString(answers.get(0)));
-        button1.setText(Integer.toString(answers.get(1)));
-        button2.setText(Integer.toString(answers.get(2)));
-        button3.setText(Integer.toString(answers.get(3)));
 
     }
 

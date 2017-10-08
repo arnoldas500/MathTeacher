@@ -1,0 +1,63 @@
+Students:
+Main layout and choosing that you are a student: 
+Don't want to right away dive into the question and have the timer start so to avoid giving these young kids anxiety will have a main button that says go (single big button centered) 
+Will be of color green to know its like a start button once you select student and so the kid is prepared to start
+Will then hide that button to display the main game page 
+Can make the default be invisible
+
+Story: I want to see the timer clearly so that I can pace myself accordingly.
+For the timer (ESTIMATED TIME OF 1):
+Will drop in a plain TextView widget in the top left corner
+Text: 30s
+Will add  10dp of padding all around and make the background color yellow as yellow is a color for caution or something to be aware of in human subconsciousness 
+Want the timer to tick down every time a second goes by and show it
+After timer fully counts down want to show final results on the screen of how the student did
+Will want a play again button after the timer reaches 0 so the student isnt just stuck at a final score screen 
+When someone hits play again the timer needs to be reset, the score needs to be set back to zero and new random questions need to be generated
+
+Story: I want to see the number of questions I attempted correctly or incorrectly to have a better understanding of my performance. --- combine with (I want to see my final score so that I know what my current skill level is.)
+Points system (ESTIMATED TIME OF 1):
+In the top right corner will add a plain TextView widget for the number of points
+Initially 0 out of 0 
+Big enough text size to see it so about 30sp with all around padding of 10dp and a background of orange to not look ugly with the rest of the color scheme
+Score only to increase when questions are answered correctly
+So score will show the number of questions correct / total number of questions EX: 3 / 5 means 3 correct out of 5 total
+Going to add a plain TextView in the button center of the page under the answer choices to show if the math problem was answered correct or incorrect!
+
+Story: I want to see a clear description of the test, so that I am well prepared for it.
+Description of the test (ESTIMATED TIME OF 3):
+Plain TextView for the description of the test will be in the top center middle of the screen 
+Textsize of 25sp with 15dp padding all around and a darker text color then the rest of the text to make it stand out more.
+The numbers for the arithmetic will be randomly generated 
+The actual arithmetic will be chosen based on the difficulty (Ex Choices of easy medium hard) Where easy is just addition, medium is addition and subtraction and hard will be a combination of addition subtraction multiplication and division
+Need to not only generate random numbers but also to generate a new question each time a question is answered
+
+Story: I want to be able to easily reach all four possible answers with my thumb so the UI does not hinder my score.
+Answer Choices (ESTIMATED TIME OF 2):
+Will use a gridLayout to display the 4 buttons with a top margin of about 20dp to seperate it from the timmer and score.
+The buttons will be widgets that are going to be drapped into the grid to position them evenly 
+Will be taking up most of the screen and large so can be reached with one thumb
+Each button will have their own tag to be referenced from 0 to 3 and first button will be in position 0,0 (ex column 0 and row 0) of the grid
+So second button would be tag 1 and column 1 with row 0, then 3rd button tag 2 col 0 row 1 and 4th button will be tag 3 col 1 row 1.
+Text size will be the biggest of about 80dp with different colors for each of the answer boxes.
+Will want the answer to appear in a random box out of the 4 boxes
+After an answer is chosen will want to clearly see if its correct or incorrect right below the answer choices
+
+
+
+Here are our stories:
+Student:
+I want to see the timer clearly so that I can pace myself accordingly.
+I want to see a clear description of the test, so that I am well prepared for it.
+I want to be able to easily reach all four possible answers with my thumb so the UI does not hinder my score.
+I want to see the number of questions I attempted correctly or incorrectly to have a better understanding of my performance. --- combine with (I want to see my final score so that I know what my current skill level is.)
+I want to see an insight to my final score that point out my
+strengths and weaknesses, so I know what to improve. EX: need to improve subtraction skills if that's what the student got the most wrong.
+Parent:
+ I want to see my children’s history of scores, so that I can see their progress. For example by date --- combine with ( I want to see when my children took the test, so that I know when they actually studied. )
+I want to see what specific topic my children are struggling with the most, so that I have an understanding of what they need help with.
+Teacher
+I want to be able to set the length of the timer, so I can change the amount of time students get to take the exam.
+I want to be able to increase the difficulty, so that I can continuously improve the arithmetic skills of my students.
+I want to see the individual score of each student.
+I want to be able to add and remove students, so that I can build my class of students within the app. 

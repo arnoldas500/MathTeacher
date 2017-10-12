@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     int ansLoc;
     int numCorrect = 0;
     TextView textViewResult;
+
     //answers array list
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int numQuestions = 0;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     //left to do *generate new question, get timmer working,
     public void newQuestion() {
+
         Random randInt = new Random();
 
         int first = randInt.nextInt(11);
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     //buttons now clickable and returning correct location w/o crashing
     //method to print out if answer was selected correct or not and updates score
     public void selectAns(View view){
+
         //printing each tag to log when clicked on in app
         Log.i("Tag", (String) view.getTag());
 
@@ -88,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
             numCorrect++;
             textViewResult.setText("Corrrect Answer!");
 
-
         }else
             textViewResult.setText("Wrong Answer!");
+
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
         newQuestion();
@@ -100,10 +103,11 @@ public class MainActivity extends AppCompatActivity {
     public void studentStart(View view){
         studentStartButton.setVisibility(View.INVISIBLE);
 
-
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         //find the student start button on starting/ creating app
         studentStartButton = (Button)findViewById(R.id.studentStartButton);
+
         textViewSum = (TextView)findViewById(R.id.textViewSum);
 
         button0 = (Button)findViewById(R.id.button0);
@@ -134,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
 
         newQuestion();
 
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -146,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

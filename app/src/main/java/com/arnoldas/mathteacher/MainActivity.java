@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     //hiding the student button after clicking it
     Button studentStartButton;
+    Button restartButton;
     int ansLoc;
     int numCorrect = 0;
-    double score = 0.0;
+    //double score = 0.0;
     TextView textViewResult;
     //answers array list
     ArrayList<Integer> answers = new ArrayList<Integer>();
@@ -96,9 +97,50 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText("Wrong Answer!");
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
-        score = numCorrect/numQuestions;
-        System.out.println("score is "+ score);
+        //score = numCorrect/numQuestions;
+        //System.out.println("score is "+ score);
         newQuestion();
+    }
+
+    //Play again button
+    public void restart(View view){
+        //set score back to zero
+        numCorrect = 0;
+        //num questions back to zero
+        numQuestions = 0;
+        textViewTimer.setText("30s");
+        textViewResult.setText("");
+        textViewPoints.setText("0/0");
+        restartButton.setVisibility(View.INVISIBLE);
+
+        //generating new question
+        newQuestion();
+
+        //update timeer
+        new CountDownTimer(9999, 999) {
+
+
+            @Override
+            public void onTick(long l) {
+                textViewTimer.setText(String.valueOf(l / 1000)+"sec");
+            }
+
+            @Override
+            public void onFinish() {
+                restartButton.setVisibility(View.VISIBLE);
+                textViewTimer.setText("Done");
+                double score = (numCorrect  / numQuestions);
+                int wrong = numQuestions - numCorrect;
+                int per = 100 - (Math.round((100/numQuestions)*wrong));
+                //100 - (Round((100/Questions)*Wrong))
+                System.out.println("my score is " + per);
+                int total = 100;
+                float percentage = (float)(score * 100/ total);
+                textViewResult.setText("Grade : " +Integer.toString((int) per) +"%");
+
+            }
+        }.start();
+
     }
 
     //student start button
@@ -136,32 +178,10 @@ public class MainActivity extends AppCompatActivity {
         textViewResult = (TextView)findViewById(R.id.textViewResult);
         textViewTimer = (TextView)findViewById(R.id.textViewTimer);
         textViewPoints = (TextView)findViewById(R.id.textViewPoints);
+        restartButton  = (Button)findViewById(R.id.restartButton);
 
-        newQuestion();
-
-        new CountDownTimer(9999, 999) {
-
-
-            @Override
-            public void onTick(long l) {
-                textViewTimer.setText(String.valueOf(l / 1000)+"sec");
-            }
-
-            @Override
-            public void onFinish() {
-                textViewTimer.setText("Done");
-                double score = (numCorrect  / numQuestions);
-                int wrong = numQuestions - numCorrect;
-                int per = 100 - (Math.round((100/numQuestions)*wrong));
-                //100 - (Round((100/Questions)*Wrong))
-                System.out.println("my score is " + per);
-                int total = 100;
-                float percentage = (float)(score * 100/ total);
-                textViewResult.setText("Grade : " +Integer.toString((int) per) +"%");
-
-            }
-        }.start();
-
+        //newQuestion();
+        restart(findViewById(R.id.restartButton));
     }
 
     @Override

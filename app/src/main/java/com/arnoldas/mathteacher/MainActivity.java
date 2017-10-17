@@ -1,6 +1,7 @@
 package com.arnoldas.mathteacher;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button studentStartButton;
     int ansLoc;
     int numCorrect = 0;
+    double score = 0.0;
     TextView textViewResult;
     //answers array list
     ArrayList<Integer> answers = new ArrayList<Integer>();
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
     Button button3 ;
+    TextView textViewTimer;
 
     //left to do *generate new question, get timmer working,
     public void newQuestion() {
@@ -93,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText("Wrong Answer!");
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
+        score = numCorrect/numQuestions;
+        System.out.println("score is "+ score);
         newQuestion();
     }
 
@@ -129,11 +134,33 @@ public class MainActivity extends AppCompatActivity {
         button3 = (Button)findViewById(R.id.button3);
 
         textViewResult = (TextView)findViewById(R.id.textViewResult);
-
+        textViewTimer = (TextView)findViewById(R.id.textViewTimer);
         textViewPoints = (TextView)findViewById(R.id.textViewPoints);
 
         newQuestion();
 
+        new CountDownTimer(9999, 999) {
+
+
+            @Override
+            public void onTick(long l) {
+                textViewTimer.setText(String.valueOf(l / 1000)+"sec");
+            }
+
+            @Override
+            public void onFinish() {
+                textViewTimer.setText("Done");
+                double score = (numCorrect  / numQuestions);
+                int wrong = numQuestions - numCorrect;
+                int per = 100 - (Math.round((100/numQuestions)*wrong));
+                //100 - (Round((100/Questions)*Wrong))
+                System.out.println("my score is " + per);
+                int total = 100;
+                float percentage = (float)(score * 100/ total);
+                textViewResult.setText("Grade : " +Integer.toString((int) per) +"%");
+
+            }
+        }.start();
 
     }
 

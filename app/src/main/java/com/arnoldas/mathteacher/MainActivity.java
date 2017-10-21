@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         //generating new question
         newQuestion();
 
-        //update timeer
+        //update timer
         new CountDownTimer(9999, 999) {
 
 
@@ -198,5 +198,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void manageStudents(View view) {
+        Intent intent = new Intent(this, ManageStudents.class);
+        startActivity(intent);
     }
 }

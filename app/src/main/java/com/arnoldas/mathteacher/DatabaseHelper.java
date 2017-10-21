@@ -11,17 +11,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public  class DatabaseHelper {
-    public DatabaseHelper(Context c)
+class DatabaseHelper {
+    DatabaseHelper(Context c)
     {
         db = new Database(c).getWritableDatabase();
     }
 
     private SQLiteDatabase db;
 
-    public List<StudentDTO> GetStudentList() {
+    List<StudentDTO> GetStudentList() {
         Cursor cursor = db.rawQuery("SELECT id,name,additionLevel,subtractionLevel,multiplicationLevel,divisionLevel FROM student;", null);
-        List<StudentDTO> retVal = new LinkedList<StudentDTO>();
+        List<StudentDTO> retVal = new LinkedList<>();
         while (cursor.moveToNext())
         {
             StudentDTO dto = new StudentDTO();
@@ -43,7 +43,7 @@ public  class DatabaseHelper {
                 "subtractionAttempted , subtractionSucceeded , subtractionLevel ," +
                 "multiplicationAttempted , multiplicationSucceeded , multiplicationLevel ," +
                 "divisionAttempted , divisionSucceeded , divisionLevel FROM exams WHERE studentId=" + studentId + ";", null);
-        List<ExamDTO> retVal = new LinkedList<ExamDTO>();
+        List<ExamDTO> retVal = new LinkedList<>();
         while (cursor.moveToNext())
         {
             ExamDTO dto = new ExamDTO();
@@ -96,7 +96,7 @@ public  class DatabaseHelper {
         return in;
     }
 
-    public StudentDTO CreateStudent(StudentDTO in)
+    StudentDTO CreateStudent(StudentDTO in)
     {
         ContentValues values = new ContentValues();
         values.putNull("id" );
@@ -109,6 +109,11 @@ public  class DatabaseHelper {
         long newRowId = db.insert("student", null, values);
         in.id = (int)newRowId;
         return in;
+    }
+
+    void DeleteStudent(StudentDTO in)
+    {
+        db.delete("student", "id" + " = ?", new String[] { Integer.toString(in.id) });
     }
 
 }

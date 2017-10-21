@@ -29,23 +29,21 @@ public class ManageStudents extends AppCompatActivity {
     {
         DatabaseHelper db = new DatabaseHelper(this);
         List<StudentDTO> students = db.GetStudentList();
-        String[] studentList = new String[students.size()];
-        int i=0;
-        for ( StudentDTO student : students)
-        {
-            studentList[i++] = student.name;
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, studentList);
-        ListView listView = (ListView) findViewById(R.id.studentListView);
-        listView.setAdapter(adapter);
+        ((ListView) findViewById(R.id.studentListView)).setAdapter(new ManageStudentsAdapter(this,students));
     }
 
     public void addStudent(View view) {
         DatabaseHelper db = new DatabaseHelper(this);
         StudentDTO s = new StudentDTO();
-        s.name = ((EditText)findViewById(R.id.newStudentText)).getText().toString();
+        EditText newStudentText = (EditText) findViewById(R.id.newStudentText);
+        s.name = newStudentText.getText().toString();
         db.CreateStudent(s);
+        newStudentText.setText("");
         bind();
+    }
+
+    public void removeStudent(View view) {
+        DatabaseHelper db = new DatabaseHelper(this);
+
     }
 }

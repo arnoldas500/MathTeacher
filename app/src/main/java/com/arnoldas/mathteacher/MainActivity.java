@@ -1,5 +1,6 @@
 package com.arnoldas.mathteacher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //double score = 0.0;
     TextView textViewResult;
     //answers array list
-    ArrayList<Integer> answers = new ArrayList<Integer>();
+    ArrayList<Integer> answers = new ArrayList<>();
     int numQuestions = 0;
     TextView textViewPoints;
     TextView textViewSum;
@@ -90,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
             Log.i("correct", "correct");
             //add 1 to the number of correct choices when user selects correct answer and then generate new question
             numCorrect++;
-            textViewResult.setText("Corrrect Answer!");
+            textViewResult.setText(R.string.correctAnswer);
 
 
         }else
-            textViewResult.setText("Wrong Answer!");
+            textViewResult.setText(R.string.wrongAnswer);
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
         //score = numCorrect/numQuestions;
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         numCorrect = 0;
         //num questions back to zero
         numQuestions = 0;
-        textViewTimer.setText("30s");
+        //textViewTimer.setText("30s");
         textViewResult.setText("");
         textViewPoints.setText("0/0");
         restartButton.setVisibility(View.INVISIBLE);
@@ -122,21 +123,23 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long l) {
-                textViewTimer.setText(String.valueOf(l / 1000)+"sec");
+                textViewTimer.setText(String.format(getString(R.string.sec), String.valueOf(l / 1000)));
             }
 
             @Override
             public void onFinish() {
                 restartButton.setVisibility(View.VISIBLE);
-                textViewTimer.setText("Done");
-                double score = (numCorrect  / numQuestions);
+                textViewTimer.setText(R.string.done);
+                double score = numQuestions == 0 ? 0.0 : (1.0* numCorrect  / numQuestions) * 100.0;
+                /*
                 int wrong = numQuestions - numCorrect;
                 int per = 100 - (Math.round((100/numQuestions)*wrong));
                 //100 - (Round((100/Questions)*Wrong))
                 System.out.println("my score is " + per);
                 int total = 100;
                 float percentage = (float)(score * 100/ total);
-                textViewResult.setText("Grade : " +Integer.toString((int) per) +"%");
+                */
+                textViewResult.setText("Grade : " +Integer.toString((int) score) +"%");
 
             }
         }.start();
@@ -156,15 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         //find the student start button on starting/ creating app
         studentStartButton = (Button)findViewById(R.id.studentStartButton);

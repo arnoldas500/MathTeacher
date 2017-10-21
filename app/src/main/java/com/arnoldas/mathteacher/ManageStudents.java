@@ -22,14 +22,6 @@ public class ManageStudents extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action2", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         bind();
     }
 
@@ -43,7 +35,7 @@ public class ManageStudents extends AppCompatActivity {
         {
             studentList[i++] = student.name;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, studentList);
         ListView listView = (ListView) findViewById(R.id.studentListView);
         listView.setAdapter(adapter);

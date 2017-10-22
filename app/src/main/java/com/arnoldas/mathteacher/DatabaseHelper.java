@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -20,7 +21,7 @@ class DatabaseHelper {
     private SQLiteDatabase db;
 
     List<StudentDTO> GetStudentList() {
-        Cursor cursor = db.rawQuery("SELECT id,name,additionLevel,subtractionLevel,multiplicationLevel,divisionLevel FROM student;", null);
+        Cursor cursor = db.rawQuery("SELECT id,name,additionLevel,subtractionLevel,multiplicationLevel,divisionLevel, testTime FROM student;", null);
         List<StudentDTO> retVal = new LinkedList<>();
         while (cursor.moveToNext())
         {
@@ -31,6 +32,7 @@ class DatabaseHelper {
             dto.subtractionLevel = cursor.getInt(3);
             dto.multiplicationLevel = cursor.getInt(4);
             dto.divisionLevel = cursor.getInt(5);
+            dto.testTime = cursor.getInt(6);
             retVal.add(dto);
         }
         cursor.close();
@@ -98,17 +100,24 @@ class DatabaseHelper {
 
     StudentDTO CreateStudent(StudentDTO in)
     {
-        ContentValues values = new ContentValues();
+        ContentValues values = getContentValues(in);
         values.putNull("id" );
+        long newRowId = db.insert("student", null, values);
+        in.id = (int)newRowId;
+        return in;
+    }
+
+    @NonNull
+    private ContentValues getContentValues(StudentDTO in) {
+        ContentValues values = new ContentValues();
+        values.put("id",in.id);
         values.put("name", in.name );
         values.put("additionLevel", in.additionLevel );
         values.put("subtractionLevel", in.subtractionLevel );
         values.put("multiplicationLevel", in.multiplicationLevel );
         values.put("divisionLevel", in.divisionLevel );
-
-        long newRowId = db.insert("student", null, values);
-        in.id = (int)newRowId;
-        return in;
+        values.put("testTime",in.testTime);
+        return values;
     }
 
     void DeleteStudent(StudentDTO in)
@@ -116,4 +125,9 @@ class DatabaseHelper {
         db.delete("student", "id" + " = ?", new String[] { Integer.toString(in.id) });
     }
 
+    void UpdateStudent(StudentDTO in)
+    {
+        ContentValues values = getContentValues(in);
+        db.update("student",values,"id = ?",new String[] { Integer.toString(in.id) });
+    }
 }

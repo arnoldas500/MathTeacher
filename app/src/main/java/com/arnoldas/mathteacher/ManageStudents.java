@@ -1,15 +1,13 @@
 package com.arnoldas.mathteacher;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class ManageStudents extends AppCompatActivity {
         setContentView(R.layout.activity_manage_students);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); // hide the keyboard by default
         bind();
     }
 
@@ -37,13 +35,13 @@ public class ManageStudents extends AppCompatActivity {
         StudentDTO s = new StudentDTO();
         EditText newStudentText = (EditText) findViewById(R.id.newStudentText);
         s.name = newStudentText.getText().toString();
+        s.testTime = 30;
+        s.divisionLevel = 0;
+        s.multiplicationLevel = 0;
+        s.additionLevel = 1;
+        s.subtractionLevel = 0;
         db.CreateStudent(s);
         newStudentText.setText("");
         bind();
-    }
-
-    public void removeStudent(View view) {
-        DatabaseHelper db = new DatabaseHelper(this);
-
     }
 }

@@ -5,18 +5,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class Database extends SQLiteOpenHelper {
+class Database extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "MathTeacher.db";
+    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "MathTeacher.db";
 
-    public Database(Context context) {
+    Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE student (id  INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL," +
-                "additionLevel INTEGER NOT NULL, subtractionLevel INTEGER NOT NULL,multiplicationLevel INTEGER NOT NULL,divisionLevel INTEGER NOT NULL);");
+                "additionLevel INTEGER NOT NULL, subtractionLevel INTEGER NOT NULL,multiplicationLevel INTEGER NOT NULL,divisionLevel INTEGER NOT NULL, testTime INTEGER NOT NULL);");
         db.execSQL("CREATE TABLE exams (id INTEGER PRIMARY KEY AUTOINCREMENT, studentId INTEGER NOT NULL, date INTEGER," +
                 "additionAttempted INTEGER NOT NULL, additionSucceeded INTEGER NOT NULL, additionLevel INT NOT NULL," +
                 "subtractionAttempted INTEGER NOT NULL, subtractionSucceeded INTEGER NOT NULL, subtractionLevel INT NOT NULL," +

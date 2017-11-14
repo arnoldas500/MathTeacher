@@ -146,37 +146,41 @@
 
     <TextView
         android:id="@+id/textViewResult"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/gridLayout"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
-        android:background="@android:color/holo_green_light"
+        android:background="@android:color/background_light"
+        android:textAlignment="center"
         android:textSize="50sp" />
 
     <Button
         android:id="@+id/restartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gridLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:onClick="restart"
         android:text="Restart"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:visibility="invisible"
-        android:layout_alignBottom="@+id/textViewTimer"
-        android:layout_alignLeft="@+id/textViewSum"
-        android:layout_alignStart="@+id/textViewSum"
-        android:layout_alignRight="@+id/textViewSum"
-        android:layout_alignEnd="@+id/textViewSum" />
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/manageStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSum"
-        android:layout_centerHorizontal="true"
         android:background="@android:color/holo_purple"
         android:onClick="manageStudents"
         android:text="Manage Students"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </android.widget.RelativeLayout>

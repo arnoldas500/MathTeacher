@@ -120,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
             if(multiplicationLevel>0){
                 int first = randInt.nextInt(5*multiplicationLevel);
                 int second = randInt.nextInt(5*multiplicationLevel);
+                //fix miult by zero and one
+                first +=2;
+                second +=2;
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
@@ -136,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first*second);
                     else {
-                        ansWrong = randInt.nextInt(5*multiplicationLevel);
+                        ansWrong = randInt.nextInt(5*multiplicationLevel+1);
                         while(ansWrong == first*second){
-                            ansWrong = randInt.nextInt(5*multiplicationLevel);
+                            ansWrong = randInt.nextInt(5*multiplicationLevel+2);
                         }
                         answers.add(ansWrong);
                     }
@@ -149,11 +152,14 @@ public class MainActivity extends AppCompatActivity {
             if(divisionLevel>0){
                 int first = randInt.nextInt(5*divisionLevel);
                 int second = randInt.nextInt(5*divisionLevel);
+                //fix div by zero
+                first +=1;
+                second +=1;
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
 
-                textViewSum.setText(Integer.toString(first)+" / "+Integer.toString(second));
+                textViewSum.setText("Round\n"+Integer.toString(first)+" / "+Integer.toString(second));
                 //randomly place for correct answer
                 ansLoc = randInt.nextInt(4);
 
@@ -165,9 +171,9 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first/second);
                     else {
-                        ansWrong = randInt.nextInt(5*divisionLevel);
+                        ansWrong = randInt.nextInt(5*divisionLevel+1);
                         while(ansWrong == first/second){
-                            ansWrong = randInt.nextInt(5*divisionLevel);
+                            ansWrong = randInt.nextInt(5*divisionLevel+2);
                         }
                         answers.add(ansWrong);
                     }
@@ -293,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
 
         //Chirag chnage these when you pass studentDTO later
-        testTime = 2;
+        testTime = 10;
         additionLevel = 2;
         subtractionLevel = 1;
         multiplicationLevel = 1;

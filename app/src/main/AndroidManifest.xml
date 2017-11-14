@@ -28,7 +28,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".TeacherPage" />
-        <activity android:name=".ParentPage"></activity>
+        <activity android:name=".ParentPage" />
+        <activity
+            android:name=".classStats"
+            android:label="@string/title_activity_class_stats"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

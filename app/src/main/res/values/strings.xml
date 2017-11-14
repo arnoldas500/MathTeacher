@@ -14,4 +14,5 @@
     <string name="subtract_level">Subtract Level</string>
     <string name="multiply_level">Multiply Level</string>
     <string name="divide_level">Divide Level</string>
+    <string name="title_activity_class_stats">Class Statistics</string>
 </resources>

@@ -75,6 +75,37 @@ class DatabaseHelper {
         return retVal;
     }
 
+    public ExamDTO GetAllExxamTotals() {
+        Cursor cursor = db.rawQuery("SELECT " +
+                "SUM(additionAttempted), SUM(additionSucceeded), SUM(additionLevel) ," +
+                "SUM(subtractionAttempted) , SUM(subtractionSucceeded) , SUM(subtractionLevel) ," +
+                "SUM(multiplicationAttempted) , SUM(multiplicationSucceeded) , SUM(multiplicationLevel) ," +
+                "SUM(divisionAttempted) , SUM(divisionSucceeded) , SUM(divisionLevel) FROM exams ;", null);
+
+
+            ExamDTO dto = new ExamDTO();
+
+        if (cursor.moveToNext()) {
+            dto.additionAttempted = cursor.getInt(0);
+            dto.additionSucceeded = cursor.getInt(1);
+            dto.additionLevel = cursor.getInt(2);
+
+            dto.subtractionAttempted = cursor.getInt(3);
+            dto.subtractionSucceeded = cursor.getInt(4);
+            dto.subtractionLevel = cursor.getInt(5);
+
+            dto.multiplicationAttempted = cursor.getInt(6);
+            dto.multiplicationSucceeded = cursor.getInt(7);
+            dto.multiplicationLevel = cursor.getInt(8);
+
+            dto.divisionAttempted = cursor.getInt(9);
+            dto.divisionSucceeded = cursor.getInt(10);
+            dto.divisionLevel = cursor.getInt(11);
+        }
+        cursor.close();
+        return dto;
+    }
+
     public ExamDTO CreateExam(ExamDTO in)
     {
         ContentValues values = new ContentValues();

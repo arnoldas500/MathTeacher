@@ -1,6 +1,8 @@
 package com.arnoldas.mathteacher;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,6 +23,17 @@ public class ManageStudents extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); // hide the keyboard by default
         bind();
+
+        final ManageStudents tempThis = this;
+        ((FloatingActionButton)(findViewById(R.id.floatingActionButton))).setOnClickListener
+                (new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent stats = new Intent(tempThis, classStats.class);
+                        startActivity(stats);
+                    }
+                }
+                );
     }
 
     public void bind()

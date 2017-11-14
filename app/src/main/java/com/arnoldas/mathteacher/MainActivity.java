@@ -1,5 +1,6 @@
 package com.arnoldas.mathteacher;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
     Button button3 ;
     TextView textViewTimer;
+    DatabaseHelper dbHelper;
+    StudentDTO sDTO;
 
     //left to do *generate new question, get timmer working,
     public void newQuestion() {
+
         Random randInt = new Random();
 
         int first = randInt.nextInt(11);
@@ -79,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         button1.setText(Integer.toString(answers.get(1)));
         button2.setText(Integer.toString(answers.get(2)));
         button3.setText(Integer.toString(answers.get(3)));
+
+
     }
 
 
@@ -102,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
         //score = numCorrect/numQuestions;
         //System.out.println("score is "+ score);
+        StudentDTO sDTO = new StudentDTO();
+        int testTime = sDTO.testTime;
+        int additionLevel = sDTO.additionLevel;
+        int subtractionLevel = sDTO.subtractionLevel;
+        int multiplicationLevel = sDTO.multiplicationLevel;
+        int divisionLevel = sDTO.divisionLevel;
+        System.out.println("**** test timne is ****");
+        System.out.println("**** test timne is "+testTime);
         newQuestion();
     }
 
@@ -118,6 +133,24 @@ public class MainActivity extends AppCompatActivity {
 
         //generating new question
         newQuestion();
+
+        //getting time set for test
+        //DatabaseHelper.class.getContentValues(10);
+
+        //List<StudentDTO> studentDTOs = dbHelper.GetStudentList();
+        //System.out.println("********* "+studentDTOs.get(1));
+
+        //hey Chirag when you pass the student DTO update these values to reflect the selected student
+        StudentDTO sDTO = new StudentDTO();
+        int testTime = sDTO.testTime;
+        int additionLevel = sDTO.additionLevel;
+        int subtractionLevel = sDTO.subtractionLevel;
+        int multiplicationLevel = sDTO.multiplicationLevel;
+        int divisionLevel = sDTO.divisionLevel;
+        System.out.println("\n****  ****");
+        System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
+
+
 
         //update timer
         new CountDownTimer(9999, 999) {

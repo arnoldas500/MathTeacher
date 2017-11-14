@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         operand +=1;
         System.out.println("operand is "+operand);
 
+        //while true
         if(operand ==1){
             //add
             if(additionLevel>0){
@@ -260,11 +261,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
 
         //Chirag chnage these when you pass studentDTO later
-        testTime = 2;
-        additionLevel = 2;
-        subtractionLevel = 1;
-        multiplicationLevel = 1;
-        divisionLevel = 1;
+        testTime = 20;
+        additionLevel = 4;
+        subtractionLevel = 4;
+        multiplicationLevel = 4;
+        divisionLevel = 4;
         newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
     }
 
@@ -299,11 +300,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
 
         //Chirag chnage these when you pass studentDTO later
-        testTime = 10;
-        additionLevel = 2;
-        subtractionLevel = 1;
-        multiplicationLevel = 1;
-        divisionLevel = 1;
+        testTime = 20;
+        additionLevel = 4;
+        subtractionLevel = 4;
+        multiplicationLevel = 4;
+        divisionLevel = 4;
 
 
         //generating new question

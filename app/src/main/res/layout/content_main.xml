@@ -168,7 +168,8 @@
         android:layout_alignParentTop="true"
         android:onClick="restart"
         android:text="Restart"
-        android:textSize="36sp"
+        android:textColor="?android:attr/textColorLinkInverse"
+        android:textSize="50sp"
         android:textStyle="bold"
         android:visibility="invisible" />
 

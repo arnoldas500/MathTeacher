@@ -46,14 +46,145 @@ public class MainActivity extends AppCompatActivity {
     StudentDTO sDTO;
 
     //left to do *generate new question, get timmer working,
-    public void newQuestion() {
+    public void newQuestion(int additionLevel, int subtractionLevel, int multiplicationLevel, int divisionLevel) {
 
+
+        //randomly choose i to 4 where 1 is addition and 4 is div
+        //if one of them is zero then just rechoose
+        //then inside choose lelvel based on level passed
         Random randInt = new Random();
+        int operand = randInt.nextInt(4);
+        operand +=1;
+        System.out.println("operand is "+operand);
 
+        if(operand ==1){
+            //add
+            if(additionLevel>0){
+                int first = randInt.nextInt(10*additionLevel);
+                int second = randInt.nextInt(10*additionLevel);
+                System.out.println("first : "+first);
+                System.out.println("second : "+second);
+
+
+                textViewSum.setText(Integer.toString(first)+" + "+Integer.toString(second));
+                //randomly place for correct answer
+                ansLoc = randInt.nextInt(4);
+
+
+                //for scenario of having the correct answer accidently randomly chosen
+                int ansWrong;
+                answers.clear();
+                for(int a = 0 ; a<4 ; a++){
+                    if(a == ansLoc)
+                        answers.add(first+second);
+                    else {
+                        ansWrong = randInt.nextInt(10*additionLevel);
+                        while(ansWrong == first+second){
+                            ansWrong = randInt.nextInt(10*additionLevel);
+                        }
+                        answers.add(ansWrong);
+                    }
+                }
+            }
+        }else if(operand ==2){
+            //sub
+            if(subtractionLevel>0){
+                int first = randInt.nextInt(10*subtractionLevel);
+                int second = randInt.nextInt(10*subtractionLevel);
+                System.out.println("first : "+first);
+                System.out.println("second : "+second);
+
+
+                textViewSum.setText(Integer.toString(first)+" - "+Integer.toString(second));
+                //randomly place for correct answer
+                ansLoc = randInt.nextInt(4);
+
+
+                //for scenario of having the correct answer accidently randomly chosen
+                int ansWrong;
+                answers.clear();
+                for(int a = 0 ; a<4 ; a++){
+                    if(a == ansLoc)
+                        answers.add(first-second);
+                    else {
+                        ansWrong = randInt.nextInt(10*subtractionLevel);
+                        while(ansWrong == first-second){
+                            ansWrong = randInt.nextInt(10*subtractionLevel);
+                        }
+                        answers.add(ansWrong);
+                    }
+                }
+            }
+        }else if(operand==3){
+            //mult
+            if(multiplicationLevel>0){
+                int first = randInt.nextInt(5*multiplicationLevel);
+                int second = randInt.nextInt(5*multiplicationLevel);
+                System.out.println("first : "+first);
+                System.out.println("second : "+second);
+
+
+                textViewSum.setText(Integer.toString(first)+" * "+Integer.toString(second));
+                //randomly place for correct answer
+                ansLoc = randInt.nextInt(4);
+
+
+                //for scenario of having the correct answer accidently randomly chosen
+                int ansWrong;
+                answers.clear();
+                for(int a = 0 ; a<4 ; a++){
+                    if(a == ansLoc)
+                        answers.add(first*second);
+                    else {
+                        ansWrong = randInt.nextInt(5*multiplicationLevel);
+                        while(ansWrong == first*second){
+                            ansWrong = randInt.nextInt(5*multiplicationLevel);
+                        }
+                        answers.add(ansWrong);
+                    }
+                }
+            }
+        }else if (operand==4){
+            //div
+            if(divisionLevel>0){
+                int first = randInt.nextInt(5*divisionLevel);
+                int second = randInt.nextInt(5*divisionLevel);
+                System.out.println("first : "+first);
+                System.out.println("second : "+second);
+
+
+                textViewSum.setText(Integer.toString(first)+" / "+Integer.toString(second));
+                //randomly place for correct answer
+                ansLoc = randInt.nextInt(4);
+
+
+                //for scenario of having the correct answer accidently randomly chosen
+                int ansWrong;
+                answers.clear();
+                for(int a = 0 ; a<4 ; a++){
+                    if(a == ansLoc)
+                        answers.add(first/second);
+                    else {
+                        ansWrong = randInt.nextInt(5*divisionLevel);
+                        while(ansWrong == first/second){
+                            ansWrong = randInt.nextInt(5*divisionLevel);
+                        }
+                        answers.add(ansWrong);
+                    }
+                }
+            }
+
+        }else{
+            System.out.println("error picking");
+        }
+
+/*
+        //if(enum)
         int first = randInt.nextInt(11);
         int second = randInt.nextInt(11);
         System.out.println("first : "+first);
         System.out.println("second : "+second);
+
 
         textViewSum.setText(Integer.toString(first)+" + "+Integer.toString(second));
         //randomly place for correct answer
@@ -74,6 +205,10 @@ public class MainActivity extends AppCompatActivity {
                 answers.add(ansWrong);
             }
         }
+*/
+
+
+
         //updating answer buttons with numbers from above
         System.out.println("0 : "+answers.get(0));
         System.out.println("1 : "+answers.get(1));
@@ -107,17 +242,24 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText(R.string.wrongAnswer);
         numQuestions++;
         textViewPoints.setText(Integer.toString(numCorrect)+ " / "+Integer.toString(numQuestions));
-        //score = numCorrect/numQuestions;
-        //System.out.println("score is "+ score);
+//hey Chirag when you pass the student DTO update these values to reflect the selected student
         StudentDTO sDTO = new StudentDTO();
+        //time be in seconds already do the conversion so just pass 30 or whaterv for what seconds you want
         int testTime = sDTO.testTime;
         int additionLevel = sDTO.additionLevel;
         int subtractionLevel = sDTO.subtractionLevel;
         int multiplicationLevel = sDTO.multiplicationLevel;
         int divisionLevel = sDTO.divisionLevel;
-        System.out.println("**** test timne is ****");
-        System.out.println("**** test timne is "+testTime);
-        newQuestion();
+        System.out.println("\n****  ****");
+        System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
+
+        //Chirag chnage these when you pass studentDTO later
+        testTime = 2;
+        additionLevel = 2;
+        subtractionLevel = 1;
+        multiplicationLevel = 1;
+        divisionLevel = 1;
+        newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
     }
 
     //Play again button
@@ -131,8 +273,7 @@ public class MainActivity extends AppCompatActivity {
         textViewPoints.setText("0/0");
         restartButton.setVisibility(View.INVISIBLE);
 
-        //generating new question
-        newQuestion();
+
 
         //getting time set for test
         //DatabaseHelper.class.getContentValues(10);
@@ -142,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
 
         //hey Chirag when you pass the student DTO update these values to reflect the selected student
         StudentDTO sDTO = new StudentDTO();
+        //time be in seconds already do the conversion so just pass 30 or whaterv for what seconds you want
         int testTime = sDTO.testTime;
         int additionLevel = sDTO.additionLevel;
         int subtractionLevel = sDTO.subtractionLevel;
@@ -150,10 +292,19 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n****  ****");
         System.out.println("**** test timne is "+testTime+" add lvl: "+additionLevel+" mult lvl: "+ multiplicationLevel+" sub lvl "+subtractionLevel+" div lvl "+divisionLevel);
 
+        //Chirag chnage these when you pass studentDTO later
+        testTime = 2;
+        additionLevel = 2;
+        subtractionLevel = 1;
+        multiplicationLevel = 1;
+        divisionLevel = 1;
 
+
+        //generating new question
+        newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
 
         //update timer
-        new CountDownTimer(9999, 999) {
+        new CountDownTimer(testTime*999, 999) {
 
 
             @Override

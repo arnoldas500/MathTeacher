@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("operand is "+operand);
 
         //while true
-        if(operand ==1){
+        if((operand ==1) && (additionLevel>0) ){
             //add
             if(additionLevel>0){
                 int first = randInt.nextInt(10*additionLevel);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }else if(operand ==2){
+        }else if((operand ==2) && (subtractionLevel>0)){
             //sub
             if(subtractionLevel>0){
                 int first = randInt.nextInt(10*subtractionLevel);
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }else if(operand==3){
+        }else if((operand==3) && (multiplicationLevel>0)){
             //mult
             if(multiplicationLevel>0){
                 int first = randInt.nextInt(5*multiplicationLevel);
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }else if (operand==4){
+        }else if ((operand==4) && (divisionLevel>0)){
             //div
             if(divisionLevel>0){
                 int first = randInt.nextInt(5*divisionLevel);
@@ -183,6 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             System.out.println("error picking");
+            additionLevel = 4;
+            subtractionLevel = 0;
+            multiplicationLevel = 0;
+            divisionLevel = 0;
+            newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
         }
 
 /*
@@ -263,9 +268,9 @@ public class MainActivity extends AppCompatActivity {
         //Chirag chnage these when you pass studentDTO later
         testTime = 20;
         additionLevel = 4;
-        subtractionLevel = 4;
-        multiplicationLevel = 4;
-        divisionLevel = 4;
+        subtractionLevel = 0;
+        multiplicationLevel = 0;
+        divisionLevel = 0;
         newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
     }
 
@@ -302,9 +307,9 @@ public class MainActivity extends AppCompatActivity {
         //Chirag chnage these when you pass studentDTO later
         testTime = 20;
         additionLevel = 4;
-        subtractionLevel = 4;
-        multiplicationLevel = 4;
-        divisionLevel = 4;
+        subtractionLevel = 0;
+        multiplicationLevel = 0;
+        divisionLevel = 0;
 
 
         //generating new question

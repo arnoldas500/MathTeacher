@@ -159,8 +159,10 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
+                //test
+                int mult = first*second;
 
-                textViewSum.setText("Round\n"+Integer.toString(first)+" / "+Integer.toString(second));
+                textViewSum.setText(Integer.toString(mult)+" / "+Integer.toString(first));
                 //randomly place for correct answer
                 ansLoc = randInt.nextInt(4);
 
@@ -170,15 +172,36 @@ public class MainActivity extends AppCompatActivity {
                 answers.clear();
                 for(int a = 0 ; a<4 ; a++){
                     if(a == ansLoc)
-                        answers.add(first/second);
+                        answers.add(second);
                     else {
                         ansWrong = randInt.nextInt(5*divisionLevel+1);
-                        while(ansWrong == first/second){
+                        while(ansWrong == second){
                             ansWrong = randInt.nextInt(5*divisionLevel+2);
                         }
                         answers.add(ansWrong);
                     }
                 }
+                //end test
+
+//                textViewSum.setText("Round\n"+Integer.toString(first)+" / "+Integer.toString(second));
+//                //randomly place for correct answer
+//                ansLoc = randInt.nextInt(4);
+//
+//
+//                //for scenario of having the correct answer accidently randomly chosen
+//                int ansWrong;
+//                answers.clear();
+//                for(int a = 0 ; a<4 ; a++){
+//                    if(a == ansLoc)
+//                        answers.add(first/second);
+//                    else {
+//                        ansWrong = randInt.nextInt(5*divisionLevel+1);
+//                        while(ansWrong == first/second){
+//                            ansWrong = randInt.nextInt(5*divisionLevel+2);
+//                        }
+//                        answers.add(ansWrong);
+//                    }
+//                }
             }
 
         }else{

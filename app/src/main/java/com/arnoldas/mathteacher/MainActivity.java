@@ -160,11 +160,10 @@ public class MainActivity extends AppCompatActivity {
         }else if((operand==3) && (multiplicationLevel>0)){
             //mult
             if(multiplicationLevel>0){
-                int first = randInt.nextInt(5*multiplicationLevel+1);
-                int second = randInt.nextInt(5*multiplicationLevel+3);
+                int first = 3+randInt.nextInt(5*multiplicationLevel+1);
+                int second = 2+randInt.nextInt(5*multiplicationLevel+3);
                 //fix miult by zero and one
-                first +=2;
-                second +=2;
+
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
@@ -210,8 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 int first = 1+randInt.nextInt(5*divisionLevel+1);
                 int second = 2+randInt.nextInt(5*divisionLevel+4);
                 //fix div by zero
-                first +=1;
-                second +=1;
+                
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 

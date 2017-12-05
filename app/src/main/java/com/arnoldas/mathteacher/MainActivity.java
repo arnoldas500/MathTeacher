@@ -79,9 +79,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first+second);
                     else {
-                        ansWrong = randInt.nextInt(10*additionLevel);
+                        //ansWrong = randInt.nextInt(10*additionLevel);
+                        ansWrong = (first+second) + randInt.nextInt(4+additionLevel);
                         while(ansWrong == first+second){
-                            ansWrong = randInt.nextInt(10*additionLevel);
+                            ansWrong = (first+second) + randInt.nextInt(3+additionLevel);
                         }
                         answers.add(ansWrong);
                     }
@@ -108,9 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first-second);
                     else {
-                        ansWrong = randInt.nextInt(10*subtractionLevel);
+                        //ansWrong = randInt.nextInt(10*subtractionLevel);
+                        ansWrong = (first-second) - randInt.nextInt(2+subtractionLevel);
                         while(ansWrong == first-second){
-                            ansWrong = randInt.nextInt(10*subtractionLevel);
+                            ansWrong = (first-second) + randInt.nextInt(3+subtractionLevel);
                         }
                         answers.add(ansWrong);
                     }
@@ -140,9 +142,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first*second);
                     else {
-                        ansWrong = randInt.nextInt(5*multiplicationLevel+1);
+                        //ansWrong = randInt.nextInt(5*multiplicationLevel+1);
+                        ansWrong = (first*second)-randInt.nextInt(multiplicationLevel+1);
                         while(ansWrong == first*second){
-                            ansWrong = randInt.nextInt(5*multiplicationLevel+2);
+                            ansWrong = (first*second)+randInt.nextInt(multiplicationLevel+1);
                         }
                         answers.add(ansWrong);
                     }
@@ -174,9 +177,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(second);
                     else {
-                        ansWrong = randInt.nextInt(5*divisionLevel+1);
+                        //ansWrong = randInt.nextInt(5*divisionLevel+1);
+                        ansWrong = second + randInt.nextInt(divisionLevel+1);
                         while(ansWrong == second){
-                            ansWrong = randInt.nextInt(5*divisionLevel+2);
+                            ansWrong = second + randInt.nextInt(divisionLevel+2);
                         }
                         answers.add(ansWrong);
                     }

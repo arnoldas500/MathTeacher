@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         if((operand ==1) && (additionLevel>0) ){
             //add
             if(additionLevel>0){
-                int first = randInt.nextInt(10*additionLevel);
-                int second = randInt.nextInt(10*additionLevel);
+                int first = 2+randInt.nextInt(10*additionLevel);
+                int second = 1+randInt.nextInt(10*additionLevel);
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first+second);
                     else {
-                        //ansWrong = randInt.nextInt(10*additionLevel);
-                        ansWrong = (first+second) + randInt.nextInt(4+additionLevel);
+                        //ansWrong = 1+randInt.nextInt(10*additionLevel+1);
+                        ansWrong = (first+second)+randInt.nextInt(4*additionLevel);
                         while(ansWrong == first+second){
-                            ansWrong = (first+second) + randInt.nextInt(3+additionLevel);
+                            ansWrong = (first+second)+randInt.nextInt(5*additionLevel);
                         }
                         answers.add(ansWrong);
                     }
@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
         }else if((operand ==2) && (subtractionLevel>0)){
             //sub
             if(subtractionLevel>0){
-                int first = randInt.nextInt(10*subtractionLevel);
-                int second = randInt.nextInt(10*subtractionLevel);
+                int first = 3+randInt.nextInt(10*subtractionLevel);
+                int second = 2+randInt.nextInt(10*subtractionLevel);
                 System.out.println("first : "+first);
                 System.out.println("second : "+second);
 
@@ -109,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(first-second);
                     else {
-                        //ansWrong = randInt.nextInt(10*subtractionLevel);
-                        ansWrong = (first-second) - randInt.nextInt(2+subtractionLevel);
+                        //ansWrong = 1+randInt.nextInt(10*subtractionLevel+2);
+                        ansWrong = (first-second)+randInt.nextInt(4*subtractionLevel);
                         while(ansWrong == first-second){
-                            ansWrong = (first-second) + randInt.nextInt(3+subtractionLevel);
+                            ansWrong = (first-second)+randInt.nextInt(5*subtractionLevel);
                         }
                         answers.add(ansWrong);
                     }
@@ -121,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
         }else if((operand==3) && (multiplicationLevel>0)){
             //mult
             if(multiplicationLevel>0){
-                int first = randInt.nextInt(5*multiplicationLevel);
-                int second = randInt.nextInt(5*multiplicationLevel);
+                int first = randInt.nextInt(5*multiplicationLevel+1);
+                int second = randInt.nextInt(5*multiplicationLevel+3);
                 //fix miult by zero and one
                 first +=2;
                 second +=2;
@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity {
                         answers.add(first*second);
                     else {
                         //ansWrong = randInt.nextInt(5*multiplicationLevel+1);
-                        ansWrong = (first*second)-randInt.nextInt(multiplicationLevel+1);
+                        ansWrong = (first*second)+randInt.nextInt(4*multiplicationLevel);
                         while(ansWrong == first*second){
-                            ansWrong = (first*second)+randInt.nextInt(multiplicationLevel+1);
+                            ansWrong = (first*second)+randInt.nextInt(5*multiplicationLevel);
                         }
                         answers.add(ansWrong);
                     }
@@ -154,8 +154,8 @@ public class MainActivity extends AppCompatActivity {
         }else if ((operand==4) && (divisionLevel>0)){
             //div
             if(divisionLevel>0){
-                int first = randInt.nextInt(5*divisionLevel);
-                int second = randInt.nextInt(5*divisionLevel);
+                int first = 1+randInt.nextInt(5*divisionLevel+1);
+                int second = 2+randInt.nextInt(5*divisionLevel+4);
                 //fix div by zero
                 first +=1;
                 second +=1;
@@ -177,10 +177,10 @@ public class MainActivity extends AppCompatActivity {
                     if(a == ansLoc)
                         answers.add(second);
                     else {
-                        //ansWrong = randInt.nextInt(5*divisionLevel+1);
-                        ansWrong = second + randInt.nextInt(divisionLevel+1);
+                        //ansWrong = 2+randInt.nextInt(5*divisionLevel+2);
+                        ansWrong = second+randInt.nextInt(4*divisionLevel);
                         while(ansWrong == second){
-                            ansWrong = second + randInt.nextInt(divisionLevel+2);
+                            ansWrong = second+randInt.nextInt(3*divisionLevel);
                         }
                         answers.add(ansWrong);
                     }

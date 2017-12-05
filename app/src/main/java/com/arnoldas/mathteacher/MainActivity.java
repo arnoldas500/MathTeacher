@@ -184,9 +184,9 @@ public class MainActivity extends AppCompatActivity {
         }else{
             System.out.println("error picking");
             additionLevel = 4;
-            subtractionLevel = 0;
-            multiplicationLevel = 0;
-            divisionLevel = 0;
+            subtractionLevel = 4;
+            multiplicationLevel = 3;
+            divisionLevel = 4;
             newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
         }
 
@@ -268,9 +268,9 @@ public class MainActivity extends AppCompatActivity {
         //Chirag chnage these when you pass studentDTO later
         testTime = 20;
         additionLevel = 4;
-        subtractionLevel = 0;
-        multiplicationLevel = 0;
-        divisionLevel = 0;
+        subtractionLevel = 4;
+        multiplicationLevel = 3;
+        divisionLevel = 4;
         newQuestion(additionLevel, subtractionLevel, multiplicationLevel, divisionLevel);
     }
 
@@ -307,9 +307,9 @@ public class MainActivity extends AppCompatActivity {
         //Chirag chnage these when you pass studentDTO later
         testTime = 20;
         additionLevel = 4;
-        subtractionLevel = 0;
-        multiplicationLevel = 0;
-        divisionLevel = 0;
+        subtractionLevel = 4;
+        multiplicationLevel = 3;
+        divisionLevel = 4;
 
 
         //generating new question

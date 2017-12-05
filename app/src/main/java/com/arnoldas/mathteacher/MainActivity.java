@@ -80,11 +80,36 @@ public class MainActivity extends AppCompatActivity {
                         answers.add(first+second);
                     else {
                         //ansWrong = 1+randInt.nextInt(10*additionLevel+1);
-                        ansWrong = (first+second)+randInt.nextInt(4*additionLevel);
+                        ansWrong = (first+second)+randInt.nextInt(a*additionLevel+1);
                         while(ansWrong == first+second){
                             ansWrong = (first+second)+randInt.nextInt(5*additionLevel);
                         }
                         answers.add(ansWrong);
+                        //removing dups and inseting new value
+                        for (int i = 1; i < answers.size(); i++) {
+                            int a1 = answers.get(i);
+                            int a2 = answers.get(i-1);
+                            if (a1 == a2) {
+                                System.out.println("duplicate value : "+a1);
+                                //answers.remove(a1);
+                                int newAns = (first+second)+randInt.nextInt(5*additionLevel);
+                                answers.set(i, newAns);
+                                System.out.println("duplicate value removed");
+
+                                //answers.add(a1);
+                            }
+                        }
+//                        for (int i = 1; i < answers.size(); i++) {
+//                            int a1 = answers.get(i);
+//                            int a2 = answers.get(i-1);
+//                            if (a1 == a2) {
+//                                System.out.println("duplicate value : "+a1);
+//                                answers.remove(a1);
+//                                System.out.println("duplicate value removed");
+//                                a1 = (first+second)+randInt.nextInt(5*additionLevel);
+//                                answers.add(a1);
+//                            }
+//                        }
                     }
                 }
             }
@@ -110,11 +135,25 @@ public class MainActivity extends AppCompatActivity {
                         answers.add(first-second);
                     else {
                         //ansWrong = 1+randInt.nextInt(10*subtractionLevel+2);
-                        ansWrong = (first-second)+randInt.nextInt(4*subtractionLevel);
+                        ansWrong = (first-second)-randInt.nextInt(a*subtractionLevel+1);
                         while(ansWrong == first-second){
                             ansWrong = (first-second)+randInt.nextInt(5*subtractionLevel);
                         }
                         answers.add(ansWrong);
+                        //removing dups
+                        for (int i = 1; i < answers.size(); i++) {
+                            int a1 = answers.get(i);
+                            int a2 = answers.get(i-1);
+                            if (a1 == a2) {
+                                System.out.println("duplicate value : "+a1);
+                                //answers.remove(a1);
+                                int newAns = (first-second)+randInt.nextInt(5*subtractionLevel);
+                                answers.set(i, newAns);
+                                System.out.println("duplicate value removed");
+
+                                //answers.add(a1);
+                            }
+                        }
                     }
                 }
             }
@@ -143,11 +182,25 @@ public class MainActivity extends AppCompatActivity {
                         answers.add(first*second);
                     else {
                         //ansWrong = randInt.nextInt(5*multiplicationLevel+1);
-                        ansWrong = (first*second)+randInt.nextInt(4*multiplicationLevel);
+                        ansWrong = (first*second)+randInt.nextInt(a*multiplicationLevel+1);
                         while(ansWrong == first*second){
                             ansWrong = (first*second)+randInt.nextInt(5*multiplicationLevel);
                         }
                         answers.add(ansWrong);
+                        //removing dups
+                        for (int i = 1; i < answers.size(); i++) {
+                            int a1 = answers.get(i);
+                            int a2 = answers.get(i-1);
+                            if (a1 == a2) {
+                                System.out.println("duplicate value : "+a1);
+                                //answers.remove(a1);
+                                int newAns = (first*second)+randInt.nextInt(5*multiplicationLevel);
+                                answers.set(i, newAns);
+                                System.out.println("duplicate value removed");
+
+                                //answers.add(a1);
+                            }
+                        }
                     }
                 }
             }
@@ -178,11 +231,25 @@ public class MainActivity extends AppCompatActivity {
                         answers.add(second);
                     else {
                         //ansWrong = 2+randInt.nextInt(5*divisionLevel+2);
-                        ansWrong = second+randInt.nextInt(4*divisionLevel);
+                        ansWrong = second+randInt.nextInt(a*divisionLevel+1);
                         while(ansWrong == second){
                             ansWrong = second+randInt.nextInt(3*divisionLevel);
                         }
                         answers.add(ansWrong);
+                        //removing dups
+                        for (int i = 1; i < answers.size(); i++) {
+                            int a1 = answers.get(i);
+                            int a2 = answers.get(i-1);
+                            if (a1 == a2) {
+                                System.out.println("duplicate value : "+a1);
+                                //answers.remove(a1);
+                                int newAns = second+randInt.nextInt(3*divisionLevel);
+                                answers.set(i, newAns);
+                                System.out.println("duplicate value removed");
+
+                                //answers.add(a1);
+                            }
+                        }
                     }
                 }
                 //end test
